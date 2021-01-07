@@ -1,0 +1,6 @@
+venv
+build
+bangsue.egg-info
+build.sh
+.idea
+*.pyc

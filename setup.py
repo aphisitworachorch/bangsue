@@ -7,11 +7,11 @@ with open('requirements.txt') as f:
 
 setuptools.setup(
     name="bangsue",
-    version="1.0",
+    version="1.2",
     author="ARSANANDHA",
     author_email="arsanandha.ap@gmail.com",
     description="Bangsue. Thai Codename Generator",
-    long_description="Bangsue. Thai Codename Generator from data.go.th",
+    long_description="Bangsue. Thai Codename Generator from data.go.th, BTS(Wikipedia), MRT(Wikipedia)",
     long_description_content_type="text/markdown",
     url="https://github.com/aphisitworachorch/bangsue",
     packages=setuptools.find_packages(),

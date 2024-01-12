@@ -7,7 +7,7 @@ with open('requirements.txt') as f:
 
 setuptools.setup(
     name="bangsue",
-    version="1.2",
+    version="1.3",
     author="ARSANANDHA",
     author_email="arsanandha.ap@gmail.com",
     description="Bangsue. Thai Codename Generator",

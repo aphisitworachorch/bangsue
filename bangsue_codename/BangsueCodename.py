@@ -66,7 +66,8 @@ class BTSSkyTrain(Bangsue):
             return '_'.join([bangsue['number'], bangsue['station']])
         elif selection == "number_only":
             return '_'.join([bangsue['number']])
-
+        elif selection == "all":
+            return '_'.join([bangsue['station'], bangsue['line'], bangsue['number']])
 
 class MRTATrain(Bangsue):
 
@@ -115,6 +116,58 @@ class MRTATrain(Bangsue):
             return '_'.join([bangsue['number'], bangsue['station']])
         elif selection == "number_only":
             return '_'.join([bangsue['number']])
+        elif selection == "all":
+            return '_'.join([bangsue['station'], bangsue['line'], bangsue['number']])
+
+class RedSkyTrain(Bangsue):
+
+    def __init__(self):
+        super()
+        self.file_loc = os.path.join(os.path.dirname(__file__), 'file', 'red_skytrain.csv')
+
+    def codename_csv_get(self, specify=None):
+        super().codename_csv_get()
+        bangsue = []
+        reader = csv.DictReader(open(file=self.file_loc, newline='', encoding='utf-8-sig'))
+        for row in reader:
+            if row['station'] == '' or row['number'] == '':
+                pass
+            elif specify is not None:
+                if specify == row['station'] or specify == row['number'] or specify == row['line']:
+                    bangsue.append({
+                        "station": (row['station']).rstrip().replace(' ', '_').replace('-', '_').lower(),
+                        "number": (row['number']).rstrip().replace(' ', '').lower(),
+                        "line": (row['line']).rstrip().replace(' ', '').lower()
+                    })
+                else:
+                    pass
+            else:
+                bangsue.append({
+                    "station": (row['station']).rstrip().replace(' ', '_').replace('-', '_').lower(),
+                    "number": (row['number']).rstrip().replace(' ', '').lower(),
+                    "line": (row['line']).rstrip().replace(' ', '').lower()
+                })
+
+        return bangsue
+
+    def get_code_name(self, specify=None):
+        super().get_code_name()
+        bangsue = self.codename_csv_get(specify)
+        number = random.randint(0, len(bangsue))
+        return bangsue[number]
+
+    def convert_codename_to_string(self, bangsue, selection=None):
+        super().convert_codename_to_string(bangsue)
+        if selection == "station_only":
+            return '_'.join([bangsue['station']])
+        elif selection == "station_with_number":
+            return '_'.join([bangsue['station'], bangsue['number']])
+        elif selection == "number_with_station":
+            return '_'.join([bangsue['number'], bangsue['station']])
+        elif selection == "number_only":
+            return '_'.join([bangsue['number']])
+        elif selection == "all":
+            return '_'.join([bangsue['station'], bangsue['line'], bangsue['number']])
 
 
 class ThailandDistrict(Bangsue):

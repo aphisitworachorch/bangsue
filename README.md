@@ -1,7 +1,7 @@
-![Bangsue_Image](https://github.com/aphisitworachorch/bangsue/blob/master/bangsue.jpg)
+![Bangsue_Image](bangsue.jpg)
 
 # Bangsue
-Thai Codename Generator (Data from data.go.th)
+Thai Codename Generator (Data from data.go.th / Wikipedia)
 
 ## Installation
 
